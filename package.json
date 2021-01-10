@@ -2,8 +2,8 @@
   "name": "webpack-test",
   "version": "1.0.0",
   "scripts": {
-    "start-sync": "npx browser-sync start . -s --files '*.html, *.css, ./src/*'",
-    "start": "webpack-dev-server --config webpack/webpack.dev.config.js",
+    "start-sync": "npx browser-sync start . -s--files '*.html, *.css, ./src/*'",
+    "start": "webpack-dev-server --host 0.0.0.0 --config webpack/webpack.dev.config.js",
     "build": "webpack --config webpack/webpack.prod.config.js"
   },
   "devDependencies": {
@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "@armathai/pixi-grid": "^3.0.5",
+    "eventemitter3": "^4.0.7",
+    "gsap": "^3.5.1",
     "pixi.js": "^5.3.3"
   }
 }

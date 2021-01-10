@@ -69,3 +69,27 @@ const futer = {
 export function getFuterText() {
   return futer;
 }
+
+const gameConfig = {
+  hand: 'hand'
+}
+
+const lastPageItem = {
+  0: [
+    'divan1',
+    'divan2',
+    'divan3',
+    'divan4'
+  ],
+  1: [
+    'left1',
+    'left2',
+    'right1',
+    'right2'
+  ]
+
+}
+
+export function getLastItem() {
+  return lastPageItem
+}
