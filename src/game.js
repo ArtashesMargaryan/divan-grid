@@ -24,6 +24,7 @@ export class Game extends PIXI.Application {
   }
 
   _resize() {
+    return
     this.renderer.resize(window.innerWidth, window.innerHeight);
     this._mainView.rebuild();
   }
@@ -43,6 +44,8 @@ export class Game extends PIXI.Application {
     this.loader.add('divan2', './assets/ui/divan2.png');
     this.loader.add('divan3', './assets/ui/divan3.png');
     this.loader.add('divan4', './assets/ui/divan4.png');
+    this.loader.add('button1', './assets/ui/button1.png');
+    this.loader.add('button', './assets/ui/button.png');
     this.loader.load(() => {
       this._build();
     });
@@ -50,8 +53,7 @@ export class Game extends PIXI.Application {
 
   _build() {
     this.readAllEmitt()
-    this.goLastPage()
-    return
+
     this.buildGrid()
     // this.handAnimatia()
   }
@@ -64,14 +66,22 @@ export class Game extends PIXI.Application {
   readAllEmitt() {
     this.emitter.on('goLastPage', this.goLastPage.bind(this))
     this.emitter.on('goNextPage', this.goNextPage.bind(this))
+    this.emitter.on('retry', this.retry.bind(this))
 
   }
 
   goLastPage() {
-
-    console.warn("verch");
     this.stage.removeChild(this._mainView)
-    this.stage.addChild((this.lastPage= new LastPage()))
+    this.stage.addChild((this.lastPage = new LastPage()))
+  }
+ 
+  retry() {
+    console.warn("hasav");
+    this.config.pageNum = 0
+    this.stage.removeChild(this.lastPage)
+    this.stage.removeChild(this._mainView)
+    console.warn();
+    this.buildGrid()
   }
 
   goNextPage() {

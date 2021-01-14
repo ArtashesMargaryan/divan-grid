@@ -76,7 +76,7 @@ export function mainGridConfig() {
         },
         {
           name: 'left',
-          bounds: { x: 0, y: 0.34, width: 1, height: 0.3 },
+          bounds: { x: 0, y: 0.36, width: 1, height: 0.3 },
           cells: [
             {
               name: 'itemLeft',
@@ -95,7 +95,7 @@ export function mainGridConfig() {
         },
         {
           name: 'right',
-          bounds: { x: 0, y: 0.64, width: 1, height: 0.3 },
+          bounds: { x: 0, y: 0.68, width: 1, height: 0.3 },
           cells: [
             {
               name: 'itemRight',

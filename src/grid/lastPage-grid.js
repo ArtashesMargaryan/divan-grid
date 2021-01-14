@@ -45,10 +45,9 @@ export class LastPage extends PixiGrid {
             this.buildSofa(items[i], frame[i])
 
         }
+        this.createBtn()
         return
-        this.bulidLeft();
-        this.bulidRight();
-        this.buildHand()
+
     }
 
     buildSofa(item, frame) {
@@ -80,4 +79,40 @@ export class LastPage extends PixiGrid {
     createText(text, style) {
         return new PIXI.Text(`${text}`, style);
     }
+
+    createBtn() {
+        this.buildPlayBtn()
+        this.buildRetryBtn()
+    }
+
+    buildPlayBtn() {
+        const btn = this.createSprite('button')
+        btn.anchor.set(0.5)
+        const cont = new PIXI.Container()
+        cont.addChild(btn)
+        cont.pivot.x = cont.width / 2
+        cont.pivot.y = cont.height / 2
+        // scale=Math.min()
+        this.btnAnim(btn)
+        this.setChild('playGame', cont)
+    }
+
+    btnAnim(btn) {
+
+        const timLine = gsap.timeline({ yoyo: true, repeat: -1 })
+        timLine.from(btn, { pixi: { scaleY: 0.8, scaleX: 0.9 }, duration: 1 })
+
+    }
+
+    buildRetryBtn() {
+        const btn = this.createSprite('button1')
+        btn.anchor.set(0.5)
+        btn.interactive = true
+        btn.on('pointerup', () => {
+            this.emitter.emit('retry')
+        })
+        this.setChild('retry', btn)
+
+    }
+
 }
